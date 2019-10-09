@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_loading"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+
+    <LinearLayout
+        android:layout_gravity="center"
+        android:background="@drawable/rec_btn_white4"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_width="150dp"
+        android:layout_height="150dp">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminateTint="#0A92FF" />
+
+
+        <TextView
+            android:id="@+id/tv_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="加载中..."
+            android:textColor="#0A92FF"
+            android:textSize="15sp" />
+
+
+    </LinearLayout>
+
+
+
+
+</FrameLayout>

@@ -26,7 +26,7 @@ import kotlinx.android.synthetic.main.activity_jump.*
  */
 class JumpActivity : AppCompatActivity(), IWXRenderListener {
 
-    private var DEFAULT_BUNDER_URL = "http://192.168.1.34:8081/dist/bankOrderList.js"
+    private var DEFAULT_BUNDER_URL = "http://192.168.1.34:8081/dist/index.js"
     private val DEFAULT_TITLE = "测试标题"
     private val INSTANCE_ID = "instanceId"
     private val WEEX = "cn.woochen.widget_library.android.intent.category.WEEX"
@@ -40,7 +40,10 @@ class JumpActivity : AppCompatActivity(), IWXRenderListener {
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         setContentView(R.layout.activity_jump)
         initData()
+
     }
+
+
 
      fun initData() {
         val url = intent.data
@@ -154,7 +157,7 @@ class JumpActivity : AppCompatActivity(), IWXRenderListener {
         mWXSDKInstance = WXSDKInstance(this)
         mWXSDKInstance?.registerRenderListener(this)
         val pageName = intent.getStringExtra("name")
-        logWeex("加载url文件：$pageName url地址:$mBundUrl")
+        logWeex("加载url文件名称：$pageName url地址:$mBundUrl")
         mWXSDKInstance?.renderByUrl(pageName, mBundUrl, mWeexParams, null, WXRenderStrategy.APPEND_ASYNC)
     }
 
@@ -204,5 +207,7 @@ class JumpActivity : AppCompatActivity(), IWXRenderListener {
         mWXSDKInstance?.onActivityResult(requestCode, resultCode, data)
 
     }
+
+
 
 }
