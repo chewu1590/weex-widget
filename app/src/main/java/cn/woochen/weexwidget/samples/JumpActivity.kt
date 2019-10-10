@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity
 import android.text.TextUtils
 import android.view.View
 import cn.woochen.weexwidget.R
+import cn.woochen.weexwidget.utils.FileUtil
 import cn.woochen.weexwidget.utils.logWeex
 import com.alibaba.fastjson.JSON
 import com.taobao.weex.IWXRenderListener
@@ -155,10 +156,14 @@ class JumpActivity : AppCompatActivity(), IWXRenderListener {
      */
     private fun initWxSdk() {
         mWXSDKInstance = WXSDKInstance(this)
+        //注册global事件
+
+
         mWXSDKInstance?.registerRenderListener(this)
         val pageName = intent.getStringExtra("name")
         logWeex("加载url文件名称：$pageName url地址:$mBundUrl")
         mWXSDKInstance?.renderByUrl(pageName, mBundUrl, mWeexParams, null, WXRenderStrategy.APPEND_ASYNC)
+//        mWXSDKInstance?.render(pageName, FileUtil.readAssetsTxt(this,"index.js"), null, null, WXRenderStrategy.APPEND_ASYNC);
     }
 
 

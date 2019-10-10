@@ -2,6 +2,7 @@ package cn.woochen.widget_library
 
 import android.app.Application
 import cn.woochen.widget_library.adapter.ImageAdapter
+import cn.woochen.widget_library.component.SmartRefreshView
 import cn.woochen.widget_library.config.WeexConfig
 import cn.woochen.widget_library.config.WeexConfigManager
 import cn.woochen.widget_library.module.*
@@ -74,7 +75,7 @@ object WeexWidget {
         WXSDKEngine.registerModule("PicPreviewModule", PicPreviewModule::class.java)
         WXSDKEngine.registerModule("LoadingModule", LoadingModule::class.java)
         //component
-//        WXSDKEngine.registerComponent("smartRefreshView", SmartRefreshView::class.java)
+        WXSDKEngine.registerComponent("SmartRefreshView", SmartRefreshView::class.java)
     }
 
 }
