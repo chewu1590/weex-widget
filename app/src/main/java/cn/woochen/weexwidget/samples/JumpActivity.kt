@@ -7,10 +7,12 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.text.TextUtils
 import android.view.View
+import android.widget.ImageView
 import cn.woochen.weexwidget.R
 import cn.woochen.weexwidget.utils.FileUtil
 import cn.woochen.weexwidget.utils.logWeex
 import com.alibaba.fastjson.JSON
+import com.bumptech.glide.Glide
 import com.taobao.weex.IWXRenderListener
 import com.taobao.weex.WXSDKEngine
 import com.taobao.weex.WXSDKInstance
@@ -27,7 +29,7 @@ import kotlinx.android.synthetic.main.activity_jump.*
  */
 class JumpActivity : AppCompatActivity(), IWXRenderListener {
 
-    private var DEFAULT_BUNDER_URL = "http://192.168.1.34:8081/dist/index.js"
+    private var DEFAULT_BUNDER_URL = "http://192.168.1.34:8081/dist/simpleListPage.js"
     private val DEFAULT_TITLE = "测试标题"
     private val INSTANCE_ID = "instanceId"
     private val WEEX = "cn.woochen.widget_library.android.intent.category.WEEX"
@@ -41,12 +43,11 @@ class JumpActivity : AppCompatActivity(), IWXRenderListener {
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         setContentView(R.layout.activity_jump)
         initData()
-
+        Glide.with(this).load("").into(ImageView(this))
     }
 
 
-
-     fun initData() {
+    fun initData() {
         val url = intent.data
         val title = intent.getStringExtra("title")
         val weexPrams = intent.getStringExtra("weexPrams")
@@ -122,7 +123,7 @@ class JumpActivity : AppCompatActivity(), IWXRenderListener {
                         val url = jsonObject.getString("url")
                         val title = jsonObject.getString("title")
                         val name = jsonObject.getString("name")
-                        val debug = jsonObject.getBoolean("debug")?:false
+                        val debug = jsonObject.getBoolean("debug") ?: false
                         val weexPrams = jsonObject.getString("params")
                         if (!TextUtils.isEmpty(url)) {
                             val rawUri = Uri.parse(url)
@@ -165,7 +166,6 @@ class JumpActivity : AppCompatActivity(), IWXRenderListener {
         mWXSDKInstance?.renderByUrl(pageName, mBundUrl, mWeexParams, null, WXRenderStrategy.APPEND_ASYNC)
 //        mWXSDKInstance?.render(pageName, FileUtil.readAssetsTxt(this,"index.js"), null, null, WXRenderStrategy.APPEND_ASYNC);
     }
-
 
 
     override fun onRefreshSuccess(instance: WXSDKInstance?, width: Int, height: Int) {
@@ -212,7 +212,6 @@ class JumpActivity : AppCompatActivity(), IWXRenderListener {
         mWXSDKInstance?.onActivityResult(requestCode, resultCode, data)
 
     }
-
 
 
 }

@@ -23,7 +23,7 @@ class ImageAdapter : IWXImgLoaderAdapter {
 
     @SuppressLint("CheckResult")
     override fun setImage(url: String?, view: ImageView?, quality: WXImageQuality?, strategy: WXImageStrategy?) {
-        Log.e("ImageAdapter","图片地址：$url")
+//        Log.e("ImageAdapter","图片地址：$url")
         if (TextUtils.isEmpty(url)) return
         WXSDKManager.getInstance().postOnUiThread({
             if (view?.context != null){

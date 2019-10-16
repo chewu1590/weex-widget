@@ -51,8 +51,8 @@ class SmartRefreshView(instance: WXSDKInstance, parent: WXVContainer<*>, basicCo
     @WXComponentProp(name = "refresh")
     fun setDisplay(refreshStatus: String) {
        if (TextUtils.equals("hide", refreshStatus)) {
-            hostView.finishRefresh()
-            hostView.setNoMoreData(false)
+            hostView?.finishRefresh()
+            hostView?.setNoMoreData(false)
         }
     }
 
@@ -60,15 +60,18 @@ class SmartRefreshView(instance: WXSDKInstance, parent: WXVContainer<*>, basicCo
     fun setMore(moreStatus: String) {
         when {
             TextUtils.equals("show", moreStatus) -> ""
-            TextUtils.equals("hide", moreStatus) -> hostView.finishLoadMore()
-            TextUtils.equals("nodata", moreStatus) -> hostView.finishLoadMoreWithNoMoreData()
+            TextUtils.equals("hide", moreStatus) -> hostView?.finishLoadMore()
+            TextUtils.equals("nodata", moreStatus) -> hostView?.finishLoadMoreWithNoMoreData()
         }
     }
 
 
     @WXComponentProp(name = "canLoadMore")
-    fun setMore(canLoadMore: Boolean?) {
-        hostView.setEnableLoadMore(canLoadMore!!)
+    fun canLoadMore(canLoadMore: Boolean?) {
+        if (canLoadMore != null){
+            hostView?.setEnableLoadMore(canLoadMore)
+        }
+
     }
 
 }
